@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Header from './Header';
+import Header from './Container/Header';
 import { fetchUsers } from './Request';
 
 import './App.css';
