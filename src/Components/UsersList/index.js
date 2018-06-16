@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import UserCard from './../UserCard';
+import './UserList.css';
+
 const UsersList = ({ isLoading, isError, data }) => {
   if (isLoading) {
     return <div>(Loading)Getting users...</div>;
@@ -19,12 +22,16 @@ const UsersList = ({ isLoading, isError, data }) => {
   }
 
   if (data.total_count > 0) {
-    return <div>Now show users</div>;
+    return (
+      <div className="user-list">
+        {data.items.map((user, index) => <UserCard key={index} user={user} />)}
+      </div>
+    );
   }
 };
 
 UsersList.propTypes = {
-  users: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired
 };
