@@ -9,7 +9,9 @@ const UserCard = ({ user }) => {
       <img src={user.avatar_url} className="avatar-image" alt="logo" />
       <div className="user-card-info">
         <div className="user-name">{user.login}</div>
-        <div>Profile URL: {user.url}</div>
+        <div className="profile-url">Profile URL: {user.url}</div>
+        <div>User type: {user.type}</div>
+        <div>Score: {user.score}</div>
       </div>
     </div>
   );
