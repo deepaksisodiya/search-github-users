@@ -4,3 +4,12 @@
   padding: 20px;
   color: white;
 }
+
+.name-input {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 12px 20px 12px 12px;
+}
