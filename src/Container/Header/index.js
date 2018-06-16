@@ -40,5 +40,5 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-  getAllUsers: PropTypes.func
+  getAllUsers: PropTypes.func.isRequired
 };

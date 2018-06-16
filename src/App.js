@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Container/Header';
+import UsersList from './Components/UsersList';
 import { fetchUsers } from './Request';
 
 import './App.css';
@@ -11,7 +12,7 @@ class App extends Component {
     this.state = {
       isLoading: false,
       isError: false,
-      users: []
+      data: {}
     };
     this.getAllUsers = this.getAllUsers.bind(this);
   }
@@ -24,9 +25,9 @@ class App extends Component {
     try {
       const response = await fetchUsers(name);
       if (response.ok) {
-        const users = await response.json();
+        const data = await response.json();
         this.setState({
-          users
+          data
         });
       }
     } catch (error) {
@@ -41,10 +42,14 @@ class App extends Component {
   }
 
   render() {
+    const { data, isLoading, isError } = this.state;
+
     return (
       <div className="App">
         <Header getAllUsers={this.getAllUsers} />
-        <div>middle content comes here</div>
+        <div style={{ marginTop: 200 }}>
+          <UsersList data={data} isLoading={isLoading} isError={isError} />
+        </div>
       </div>
     );
   }
