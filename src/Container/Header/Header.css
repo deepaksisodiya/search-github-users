@@ -1,6 +1,7 @@
 .Header {
+  display: flex;
+  justify-content: center;
   background-color: #428bca;
-  height: 60px;
   padding: 20px;
   color: white;
 }
@@ -12,11 +13,18 @@
   font-size: 16px;
   background-color: white;
   padding: 12px 20px 12px 12px;
+  width: 300px;
 }
 
 .sort-input {
   height: 45px;
-  width: 200px;
+  width: 250px;
   background-color: white;
   font-size: 16px;
+}
+
+.form {
+  min-width: 630px;
+  display: flex;
+  justify-content: space-between;
 }

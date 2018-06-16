@@ -28,7 +28,7 @@ export default class Header extends Component {
 
     return (
       <header className="Header">
-        <form>
+        <form className="form">
           <select
             value={sortValue}
             onChange={this.handleChange}
