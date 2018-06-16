@@ -17,6 +17,10 @@ class App extends Component {
     this.getAllUsers = this.getAllUsers.bind(this);
   }
 
+  componentDidMount() {
+    document.body.style = 'background: #F9F9F9;';
+  }
+
   async getAllUsers(name) {
     this.setState({
       isLoading: true
@@ -47,9 +51,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header getAllUsers={this.getAllUsers} />
-        <div style={{ marginTop: 200 }}>
-          <UsersList data={data} isLoading={isLoading} isError={isError} />
-        </div>
+        <UsersList data={data} isLoading={isLoading} isError={isError} />
       </div>
     );
   }
