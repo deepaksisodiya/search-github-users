@@ -1,0 +1,24 @@
+.user-card {
+  display: flex;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 16px;
+  min-width: 600px;
+  margin-top: 16px;
+}
+
+.avatar-image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.user-card-info {
+  padding-left: 16px;
+}
+
+.user-name {
+  font-size: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
