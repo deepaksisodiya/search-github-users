@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './Header.css';
 
 export default class Header extends Component {
@@ -7,7 +9,13 @@ export default class Header extends Component {
   };
 
   handleChange = event => {
-    this.setState({ name: event.target.value });
+    const { value } = event.target;
+
+    this.setState({
+      name: value
+    });
+
+    this.props.getAllUsers(value);
     event.preventDefault();
   };
 
@@ -30,3 +38,7 @@ export default class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  getAllUsers: PropTypes.func
+};
