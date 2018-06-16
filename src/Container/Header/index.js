@@ -1,50 +1,72 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { SORT_BY } from './../../utils';
 import './Header.css';
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleSortChange = this.handleSortChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   state = {
     name: '',
-    sortValue: ''
+    sortBy: SORT_BY.A_Z
   };
 
-  handleChange = event => {
-    const { value, name } = event.target;
+  handleNameChange(event) {
+    this.setState(
+      {
+        name: event.target.value
+      },
+      () => {
+        if (this.state.name && this.state.sortBy) {
+          this.handleSubmit(event);
+        }
+      }
+    );
+  }
 
-    this.setState({
-      [name]: value
-    });
+  handleSortChange(event) {
+    this.setState(
+      {
+        sortBy: event.target.value
+      },
+      () => {
+        if (this.state.name && this.state.sortBy) {
+          this.handleSubmit(event);
+        }
+      }
+    );
+  }
 
-    if (name === 'name') {
-      this.props.getAllUsers(value);
-    }
-
+  handleSubmit(event) {
+    this.props.getAllUsers(this.state.name, this.state.sortBy);
     event.preventDefault();
-  };
+  }
 
   render() {
-    const { name, sortValue } = this.state;
+    const { name, sortBy } = this.state;
 
     return (
       <header className="Header">
         <form className="form">
           <select
-            value={sortValue}
-            onChange={this.handleChange}
-            name="sortValue"
+            value={sortBy}
+            onChange={this.handleSortChange}
             className="sort-input"
           >
-            <option value="a-z">Name(A-Z)</option>
-            <option value="z-a">Name(Z-A)</option>
-            <option value="rankUp">Rank ↑</option>
-            <option value="rankDown">Rank ↓</option>
+            <option value={SORT_BY.A_Z}>Name(A-Z)</option>
+            <option value={SORT_BY.Z_A}>Name(Z-A)</option>
+            <option value={SORT_BY.RANK_UP}>Rank ↑</option>
+            <option value={SORT_BY.RANK_DOWN}>Rank ↓</option>
           </select>
           <input
             type="text"
             value={name}
-            onChange={this.handleChange}
-            name="name"
+            onChange={this.handleNameChange}
             placeholder="Enter Name"
             className="name-input"
           />

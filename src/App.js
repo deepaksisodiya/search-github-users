@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import Header from './Container/Header';
 import UsersList from './Components/UsersList';
-import { fetchUsers } from './Request';
+import { fetchUsers } from './request';
+import { sortUsers } from './utils';
 
 import './App.css';
 
@@ -21,7 +22,7 @@ class App extends Component {
     document.body.style = 'background: #F9F9F9;';
   }
 
-  async getAllUsers(name) {
+  async getAllUsers(name, sortBy) {
     this.setState({
       isLoading: true
     });
@@ -30,8 +31,11 @@ class App extends Component {
       const response = await fetchUsers(name);
       if (response.ok) {
         const data = await response.json();
+        const sortedData = sortUsers(data.items, sortBy);
+        const newData = { ...data, items: sortedData };
+
         this.setState({
-          data
+          data: newData
         });
       }
     } catch (error) {
