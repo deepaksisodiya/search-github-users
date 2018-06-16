@@ -9,3 +9,14 @@
   min-width: 630px;
   margin-top: 16px;
 }
+
+.users-state {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.error {
+  color: red;
+}

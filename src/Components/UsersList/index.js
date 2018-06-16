@@ -6,19 +6,27 @@ import './UserList.css';
 
 const UsersList = ({ isLoading, isError, data }) => {
   if (isLoading) {
-    return <div>(Loading)Getting users...</div>;
+    return <div className="users-state">Loading...</div>;
   }
 
   if (isError) {
-    return <div>Error in finding the user, Please try again</div>;
+    return (
+      <div className="users-state error">
+        Error in searching for given name, Please try again
+      </div>
+    );
   }
 
   if (!data.total_count) {
-    return <div>Please search from header</div>;
+    return <div className="users-state">Please search users by name</div>;
   }
 
   if (data.total_count === 0) {
-    return <div>Now show users</div>;
+    return (
+      <div className="users-state">
+        No user found for given name, Please try with other name
+      </div>
+    );
   }
 
   if (data.total_count > 0) {
