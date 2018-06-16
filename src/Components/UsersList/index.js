@@ -24,6 +24,7 @@ const UsersList = ({ isLoading, isError, data }) => {
   if (data.total_count > 0) {
     return (
       <div className="user-list">
+        <div className="total-results">Total Results : {data.total_count}</div>
         {data.items.map((user, index) => <UserCard key={index} user={user} />)}
       </div>
     );

@@ -4,3 +4,8 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.total-results {
+  min-width: 630px;
+  margin-top: 16px;
+}
