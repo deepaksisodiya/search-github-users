@@ -13,9 +13,11 @@ class App extends Component {
     this.state = {
       isLoading: false,
       isError: false,
-      data: {}
+      data: {},
+      searchForm: {}
     };
     this.getAllUsers = this.getAllUsers.bind(this);
+    this.onPageChange = this.onPageChange.bind(this);
   }
 
   componentDidMount() {
@@ -34,8 +36,15 @@ class App extends Component {
         const sortedData = sortUsers(data.items, sortBy);
         const newData = { ...data, items: sortedData };
 
+        const searchForm = {
+          name,
+          sortBy
+        };
+
         this.setState({
-          data: newData
+          data: newData,
+          searchForm,
+          isLoading: false
         });
       }
     } catch (error) {
@@ -49,13 +58,25 @@ class App extends Component {
     }
   }
 
+  onPageChange = pageObj => {
+    const { searchForm } = this.state;
+    const page = pageObj.selected + 1;
+
+    this.getAllUsers(searchForm.name, searchForm.sortBy, page);
+  };
+
   render() {
     const { data, isLoading, isError } = this.state;
 
     return (
       <div className="App">
         <Header getAllUsers={this.getAllUsers} />
-        <UsersList data={data} isLoading={isLoading} isError={isError} />
+        <UsersList
+          data={data}
+          isLoading={isLoading}
+          isError={isError}
+          onPageChange={this.onPageChange}
+        />
       </div>
     );
   }

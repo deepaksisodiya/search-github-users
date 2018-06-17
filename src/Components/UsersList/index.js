@@ -5,7 +5,7 @@ import Paginate from 'react-paginate';
 import UserCard from '../../Container/UserCard';
 import './UserList.css';
 
-const UsersList = ({ isLoading, isError, data }) => {
+const UsersList = ({ isLoading, isError, data, onPageChange }) => {
   if (isLoading) {
     return <div className="users-state">Loading...</div>;
   }
@@ -30,11 +30,9 @@ const UsersList = ({ isLoading, isError, data }) => {
     );
   }
 
-  const onPageChange = pageObj => {
-    console.log(pageObj.selected + 1);
-  };
-
   if (data.total_count > 0) {
+    const pageCount = Math.ceil(data.total_count / 4);
+
     return (
       <div className="user-list">
         <div className="total-results">Total Results : {data.total_count}</div>
@@ -45,6 +43,7 @@ const UsersList = ({ isLoading, isError, data }) => {
             previousClassName="prev-next-button"
             nextClassName="prev-next-button"
             onPageChange={onPageChange}
+            pageCount={pageCount}
           />
         </div>
       </div>
@@ -55,7 +54,8 @@ const UsersList = ({ isLoading, isError, data }) => {
 UsersList.propTypes = {
   data: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired
+  isError: PropTypes.bool.isRequired,
+  onPageChange: PropTypes.func.isRequired
 };
 
 export default UsersList;
