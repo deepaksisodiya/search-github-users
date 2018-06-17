@@ -14,15 +14,19 @@ const UserRepo = ({ repo }) => {
 
 const UserReposList = ({ isLoading, isError, data }) => {
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="repo-state">Loading...</div>;
   }
 
   if (isError) {
-    return <div>Error in getting user repos, Please try again</div>;
+    return (
+      <div className="repo-state error">
+        Error in getting user repos, Please try again
+      </div>
+    );
   }
 
   if (data && data.length === 0) {
-    return <div>User does not have any repo</div>;
+    return <div className="repo-state">User does not have any repo</div>;
   }
 
   if (data && data.length > 0) {
