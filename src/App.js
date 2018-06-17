@@ -25,13 +25,14 @@ class App extends Component {
     document.body.style = 'background: #F9F9F9;';
   }
 
-  async getAllUsers(name, sortBy, page) {
+  async getAllUsers(name, sortBy, pageNumber) {
     this.setState({
-      isLoading: true
+      isLoading: true,
+      activePage: pageNumber
     });
 
     try {
-      const response = await fetchUsers(name, page);
+      const response = await fetchUsers(name, pageNumber);
       if (response.ok) {
         const data = await response.json();
         const sortedData = sortUsers(data.items, sortBy);

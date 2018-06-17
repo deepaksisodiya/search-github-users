@@ -33,8 +33,6 @@ const UsersList = ({ isLoading, isError, data, onPageChange, activePage }) => {
   }
 
   if (total_count > 0) {
-    const totalItemsCount = Math.ceil(total_count / 4);
-
     return (
       <div className="user-list">
         <div className="total-results">Total Results : {total_count}</div>
@@ -46,8 +44,13 @@ const UsersList = ({ isLoading, isError, data, onPageChange, activePage }) => {
             activeClass="active-page"
             itemClass="prev-next-button"
             innerClass="paginate-container"
-            totalItemsCount={200}
             onChange={onPageChange}
+            prevPageText="prev"
+            nextPageText="next"
+            firstPageText="first"
+            lastPageText="last"
+            totalItemsCount={total_count}
+            itemsCountPerPage={4}
           />
         </div>
       </div>
