@@ -17,33 +17,38 @@ export default class Header extends Component {
   };
 
   handleNameChange(event) {
+    event.preventDefault();
     this.setState(
       {
         name: event.target.value
       },
       () => {
         if (this.state.name && this.state.sortBy) {
-          this.handleSubmit(event);
+          this.getUsers();
         }
       }
     );
   }
 
   handleSortChange(event) {
+    event.preventDefault();
     this.setState(
       {
         sortBy: event.target.value
       },
       () => {
         if (this.state.name && this.state.sortBy) {
-          this.handleSubmit(event);
+          this.getUsers();
         }
       }
     );
   }
 
-  handleSubmit(event) {
+  getUsers() {
     this.props.getAllUsers(this.state.name, this.state.sortBy);
+  }
+
+  handleSubmit(event) {
     event.preventDefault();
   }
 
@@ -52,7 +57,7 @@ export default class Header extends Component {
 
     return (
       <header className="Header">
-        <form className="form">
+        <form className="form" onSubmit={this.handleSubmit}>
           <select
             value={sortBy}
             onChange={this.handleSortChange}
