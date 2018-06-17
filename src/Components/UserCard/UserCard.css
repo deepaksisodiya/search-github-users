@@ -1,10 +1,13 @@
 .user-card {
-  display: flex;
   background-color: white;
   border: 1px solid grey;
-  padding: 16px;
   min-width: 600px;
-  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .avatar-image {
@@ -25,4 +28,9 @@
 
 .profile-url {
   padding-bottom: 8px;
+}
+
+.user-card-button {
+  display: flex;
+  align-items: flex-end;
 }

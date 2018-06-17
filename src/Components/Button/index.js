@@ -8,11 +8,7 @@ const Button = () => {
     console.log('The button was clicked.');
   };
 
-  return (
-    <button onClick={onClick} className="button">
-      Details
-    </button>
-  );
+  return <button onClick={onClick}>Details</button>;
 };
 
 export default Button;
