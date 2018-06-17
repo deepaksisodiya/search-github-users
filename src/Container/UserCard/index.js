@@ -46,17 +46,20 @@ export default class UserCard extends Component {
     const { user } = this.props;
 
     return (
-      <div className="user-card">
-        <img src={user.avatar_url} className="avatar-image" alt="logo" />
-        <div>
-          <div className="user-name">{user.login}</div>
-          <div className="profile-url">Profile URL: {user.url}</div>
-          <div>User type: {user.type}</div>
-          <div>Score: {user.score}</div>
+      <div className="user-card-top">
+        <div className="user-card">
+          <img src={user.avatar_url} className="avatar-image" alt="logo" />
+          <div>
+            <div className="user-name">{user.login}</div>
+            <div className="profile-url">Profile URL: {user.url}</div>
+            <div>User type: {user.type}</div>
+            <div>Score: {user.score}</div>
+          </div>
+          <div className="user-card-button">
+            <Button onClick={() => this.getUserRepos(user.login)} />
+          </div>
         </div>
-        <div className="user-card-button">
-          <Button onClick={() => this.getUserRepos(user.login)} />
-        </div>
+        <div className="expanded-card">Expanded Details</div>
       </div>
     );
   }
