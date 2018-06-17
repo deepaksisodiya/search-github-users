@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Paginate from 'react-paginate';
 
 import UserCard from '../../Container/UserCard';
 import './UserList.css';
@@ -29,11 +30,23 @@ const UsersList = ({ isLoading, isError, data }) => {
     );
   }
 
+  const onPageChange = pageObj => {
+    console.log(pageObj.selected + 1);
+  };
+
   if (data.total_count > 0) {
     return (
       <div className="user-list">
         <div className="total-results">Total Results : {data.total_count}</div>
         {data.items.map((user, index) => <UserCard key={index} user={user} />)}
+        <div className="pagination">
+          <Paginate
+            containerClassName="paginate-container"
+            previousClassName="prev-next-button"
+            nextClassName="prev-next-button"
+            onPageChange={onPageChange}
+          />
+        </div>
       </div>
     );
   }

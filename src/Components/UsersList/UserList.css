@@ -20,3 +20,28 @@
 .error {
   color: red;
 }
+
+.pagination {
+  border: 1px solid black;
+  display: flex;
+  min-width: 647px;
+  justify-content: flex-end;
+}
+
+.paginate-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  width: 400px;
+  padding: 0px;
+}
+
+.prev-next-button {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+ul {
+  list-style-type: none;
+}

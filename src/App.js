@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Paginate from 'react-paginate';
 
 import Header from './Container/Header';
 import UsersList from './Components/UsersList';
@@ -50,10 +49,6 @@ class App extends Component {
     }
   }
 
-  onPageChange(pageObj) {
-    console.log(pageObj.selected + 1);
-  }
-
   render() {
     const { data, isLoading, isError } = this.state;
 
@@ -61,12 +56,6 @@ class App extends Component {
       <div className="App">
         <Header getAllUsers={this.getAllUsers} />
         <UsersList data={data} isLoading={isLoading} isError={isError} />
-        <Paginate
-          containerClassName="paginate-container"
-          previousClassName="prev-next-button"
-          nextClassName="prev-next-button"
-          onPageChange={this.onPageChange}
-        />
       </div>
     );
   }
