@@ -6,6 +6,8 @@ import UserCard from '../../Container/UserCard';
 import './UserList.css';
 
 const UsersList = ({ isLoading, isError, data, onPageChange }) => {
+  const { items, total_count } = data;
+
   if (isLoading) {
     return <div className="users-state">Loading...</div>;
   }
@@ -18,11 +20,11 @@ const UsersList = ({ isLoading, isError, data, onPageChange }) => {
     );
   }
 
-  if (!data.total_count) {
+  if (!total_count) {
     return <div className="users-state">Please search users by name</div>;
   }
 
-  if (data.total_count === 0) {
+  if (total_count === 0) {
     return (
       <div className="users-state">
         No user found for given name, Please try with other name
@@ -30,13 +32,13 @@ const UsersList = ({ isLoading, isError, data, onPageChange }) => {
     );
   }
 
-  if (data.total_count > 0) {
-    const pageCount = Math.ceil(data.total_count / 4);
+  if (total_count > 0) {
+    const pageCount = Math.ceil(total_count / 4);
 
     return (
       <div className="user-list">
-        <div className="total-results">Total Results : {data.total_count}</div>
-        {data.items.map((user, index) => <UserCard key={index} user={user} />)}
+        <div className="total-results">Total Results : {total_count}</div>
+        {items.map((user, index) => <UserCard key={index} user={user} />)}
         <div className="pagination">
           <Paginate
             containerClassName="paginate-container"
@@ -56,7 +58,10 @@ const UsersList = ({ isLoading, isError, data, onPageChange }) => {
 };
 
 UsersList.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    total_count: PropTypes.number.isRequired,
+    items: PropTypes.array.isRequired
+  }),
   isLoading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
   onPageChange: PropTypes.func.isRequired
