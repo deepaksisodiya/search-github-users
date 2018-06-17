@@ -44,6 +44,10 @@ const UsersList = ({ isLoading, isError, data, onPageChange }) => {
             nextClassName="prev-next-button"
             onPageChange={onPageChange}
             pageCount={pageCount}
+            breakClassName="prev-next-button"
+            pageClassName="prev-next-button"
+            activeClassName="active-page"
+            disabledClassName="disabled-button"
           />
         </div>
       </div>

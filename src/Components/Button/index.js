@@ -9,7 +9,11 @@ const Button = props => {
     event.preventDefault();
   };
 
-  return <button onClick={onPress}>{props.text}</button>;
+  return (
+    <button className="button" onClick={onPress}>
+      {props.text}
+    </button>
+  );
 };
 
 Button.propTypes = {
