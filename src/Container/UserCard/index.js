@@ -73,7 +73,10 @@ export default class UserCard extends Component {
             <div>Score: {user.score}</div>
           </div>
           <div className="user-card-button">
-            <Button onClick={() => this.onClick(user.login)} />
+            <Button
+              onClick={() => this.onClick(user.login)}
+              text={!this.state.showExpandedView ? 'Details' : 'Collapse'}
+            />
           </div>
         </div>
         {showExpandedView && (

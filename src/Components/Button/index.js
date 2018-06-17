@@ -9,11 +9,12 @@ const Button = props => {
     event.preventDefault();
   };
 
-  return <button onClick={onPress}>Details</button>;
+  return <button onClick={onPress}>{props.text}</button>;
 };
 
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired
 };
 
 export default Button;
