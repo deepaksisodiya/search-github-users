@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import UserCard from './../UserCard';
+import UserCard from '../../Container/UserCard';
 import './UserList.css';
 
 const UsersList = ({ isLoading, isError, data }) => {
