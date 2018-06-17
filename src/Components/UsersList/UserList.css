@@ -33,6 +33,14 @@
   align-items: center;
   width: 100%;
   padding: 0px;
+  text-decoration: none;
+}
+
+.paginate-container > li > a {
+  align-items: center;
+  width: 100%;
+  padding: 0px;
+  text-decoration: none;
 }
 
 .prev-next-button {
@@ -43,6 +51,7 @@
   color: #428bca;
   font-size: 14px;
   cursor: pointer;
+  border: 1px solid #ddd;
 }
 
 ul {
@@ -54,7 +63,7 @@ ul {
   color: white;
 }
 
-.disabled-button {
-  color: lightblue;
-  cursor: none;
+.disabled-button > a {
+  color: #777;
+  cursor: not-allowed;
 }
