@@ -14,7 +14,8 @@ class App extends Component {
       isLoading: false,
       isError: false,
       data: {},
-      searchForm: {}
+      searchForm: {},
+      activePage: 1
     };
     this.getAllUsers = this.getAllUsers.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
@@ -58,15 +59,23 @@ class App extends Component {
     }
   }
 
-  onPageChange = pageObj => {
+  onPageChange = pageNumber => {
     const { searchForm } = this.state;
-    const page = pageObj.selected + 1;
 
-    this.getAllUsers(searchForm.name, searchForm.sortBy, page);
+    this.setState(
+      (prevState, prevProp) => {
+        return {
+          activePage: pageNumber
+        };
+      },
+      () => {
+        this.getAllUsers(searchForm.name, searchForm.sortBy, pageNumber);
+      }
+    );
   };
 
   render() {
-    const { data, isLoading, isError } = this.state;
+    const { data, isLoading, isError, activePage } = this.state;
 
     return (
       <div className="App">
@@ -76,6 +85,7 @@ class App extends Component {
           isLoading={isLoading}
           isError={isError}
           onPageChange={this.onPageChange}
+          activePage={activePage}
         />
       </div>
     );

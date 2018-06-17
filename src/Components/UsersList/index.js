@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paginate from 'react-paginate';
+import Pagination from 'react-js-pagination';
 
 import UserCard from '../../Container/UserCard';
 import './UserList.css';
 
-const UsersList = ({ isLoading, isError, data, onPageChange }) => {
+const UsersList = ({ isLoading, isError, data, onPageChange, activePage }) => {
   const { items, total_count } = data;
 
   if (isLoading) {
@@ -33,23 +33,21 @@ const UsersList = ({ isLoading, isError, data, onPageChange }) => {
   }
 
   if (total_count > 0) {
-    const pageCount = Math.ceil(total_count / 4);
+    const totalItemsCount = Math.ceil(total_count / 4);
 
     return (
       <div className="user-list">
         <div className="total-results">Total Results : {total_count}</div>
         {items.map((user, index) => <UserCard key={index} user={user} />)}
         <div className="pagination">
-          <Paginate
-            containerClassName="paginate-container"
-            previousClassName="prev-next-button"
-            nextClassName="prev-next-button"
-            onPageChange={onPageChange}
-            pageCount={pageCount}
-            breakClassName="prev-next-button"
-            pageClassName="prev-next-button"
-            activeClassName="active-page"
-            disabledClassName="disabled-button"
+          <Pagination
+            activePage={activePage}
+            disabledClass="disabled-button"
+            activeClass="active-page"
+            itemClass="prev-next-button"
+            innerClass="paginate-container"
+            totalItemsCount={200}
+            onChange={onPageChange}
           />
         </div>
       </div>
