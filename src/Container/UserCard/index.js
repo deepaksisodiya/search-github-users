@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../../Components/Button';
+import UserReposList from './../../Components/UserReposList';
 import { fetchUserRepos } from '../../request';
 
 import './UserCard.css';
@@ -44,6 +45,7 @@ export default class UserCard extends Component {
 
   render() {
     const { user } = this.props;
+    const { isLoading, isError, data } = this.state;
 
     return (
       <div className="user-card-top">
@@ -59,7 +61,9 @@ export default class UserCard extends Component {
             <Button onClick={() => this.getUserRepos(user.login)} />
           </div>
         </div>
-        <div className="expanded-card">Expanded Details</div>
+        <div className="expanded-card">
+          <UserReposList isLoading={isLoading} isError={isError} data={data} />
+        </div>
       </div>
     );
   }
