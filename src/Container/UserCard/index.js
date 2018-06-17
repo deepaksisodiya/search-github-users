@@ -13,7 +13,8 @@ export default class UserCard extends Component {
     this.state = {
       isLoading: false,
       isError: false,
-      data: []
+      data: [],
+      showExpandedView: false
     };
     this.getUserRepos = this.getUserRepos.bind(this);
   }
@@ -43,9 +44,23 @@ export default class UserCard extends Component {
     }
   }
 
+  onClick = username => {
+    this.setState(
+      (prevState, prevProps) => {
+        return {
+          showExpandedView: !prevState.showExpandedView
+        };
+      },
+      () => {
+        // callback function
+        this.getUserRepos(username);
+      }
+    );
+  };
+
   render() {
     const { user } = this.props;
-    const { isLoading, isError, data } = this.state;
+    const { isLoading, isError, data, showExpandedView } = this.state;
 
     return (
       <div className="user-card-top">
@@ -58,12 +73,18 @@ export default class UserCard extends Component {
             <div>Score: {user.score}</div>
           </div>
           <div className="user-card-button">
-            <Button onClick={() => this.getUserRepos(user.login)} />
+            <Button onClick={() => this.onClick(user.login)} />
           </div>
         </div>
-        <div className="expanded-card">
-          <UserReposList isLoading={isLoading} isError={isError} data={data} />
-        </div>
+        {showExpandedView && (
+          <div className="expanded-card">
+            <UserReposList
+              isLoading={isLoading}
+              isError={isError}
+              data={data}
+            />
+          </div>
+        )}
       </div>
     );
   }
