@@ -3,15 +3,6 @@ import PropTypes from 'prop-types';
 
 import './UserReposList.css';
 
-const UserRepo = ({ repo }) => {
-  return (
-    <div className="user-repo">
-      <div>{repo.name}</div>
-      <div>{repo.language}</div>
-    </div>
-  );
-};
-
 const UserReposList = ({ isLoading, isError, data }) => {
   if (isLoading) {
     return <div className="repo-state">Loading...</div>;
@@ -32,7 +23,22 @@ const UserReposList = ({ isLoading, isError, data }) => {
   if (data && data.length > 0) {
     return (
       <div>
-        {data.map((repo, index) => <UserRepo key={index} repo={repo} />)}
+        <table>
+          <tbody>
+            <tr>
+              <th>Repo Name</th>
+              <th>Language</th>
+            </tr>
+            {data.map((repo, index) => {
+              return (
+                <tr key={index}>
+                  <td>{repo.name}</td>
+                  <td>{repo.language}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }
