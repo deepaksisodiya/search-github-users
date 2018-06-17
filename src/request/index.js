@@ -1,10 +1,13 @@
 /**
- * fetch all users by name
+ *
  * @param name
+ * @param page
  * @returns {Promise<Response>}
  */
-export const fetchUsers = name => {
-  return fetch(`https://api.github.com/search/users?q=${name}`);
+export const fetchUsers = (name, page) => {
+  return fetch(
+    `https://api.github.com/search/users?per_page=4&page=${page}&q=${name}`
+  );
 };
 
 /**

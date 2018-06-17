@@ -45,7 +45,7 @@ export default class Header extends Component {
   }
 
   getUsers() {
-    this.props.getAllUsers(this.state.name, this.state.sortBy);
+    this.props.getAllUsers(this.state.name, this.state.sortBy, 1);
   }
 
   handleSubmit(event) {

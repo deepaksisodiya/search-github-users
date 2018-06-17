@@ -22,13 +22,13 @@ class App extends Component {
     document.body.style = 'background: #F9F9F9;';
   }
 
-  async getAllUsers(name, sortBy) {
+  async getAllUsers(name, sortBy, page) {
     this.setState({
       isLoading: true
     });
 
     try {
-      const response = await fetchUsers(name);
+      const response = await fetchUsers(name, page);
       if (response.ok) {
         const data = await response.json();
         const sortedData = sortUsers(data.items, sortBy);
