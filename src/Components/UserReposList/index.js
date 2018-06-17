@@ -1,6 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './UserReposList.css';
+
+const UserRepo = ({ repo }) => {
+  return (
+    <div className="user-repo">
+      <div>{repo.name}</div>
+      <div>{repo.language}</div>
+    </div>
+  );
+};
+
 const UserReposList = ({ isLoading, isError, data }) => {
   if (isLoading) {
     return <div>Loading...</div>;
@@ -15,7 +26,11 @@ const UserReposList = ({ isLoading, isError, data }) => {
   }
 
   if (data && data.length > 0) {
-    return <div>Now show the user repos</div>;
+    return (
+      <div>
+        {data.map((repo, index) => <UserRepo key={index} repo={repo} />)}
+      </div>
+    );
   }
 };
 
