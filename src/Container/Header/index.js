@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { SORT_BY } from './../../utils';
+
 import './Header.css';
 
 export default class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name: '',
+      sortBy: SORT_BY.A_Z
+    };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  state = {
-    name: '',
-    sortBy: SORT_BY.A_Z
-  };
 
   handleNameChange(event) {
     event.preventDefault();

@@ -64,7 +64,7 @@ class App extends Component {
     const { searchForm } = this.state;
 
     this.setState(
-      (prevState, prevProp) => {
+      () => {
         return {
           activePage: pageNumber
         };

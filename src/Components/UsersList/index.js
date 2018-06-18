@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 
 import UserCard from '../../Container/UserCard';
+
 import './UserList.css';
 
 const UsersList = ({ isLoading, isError, data, onPageChange, activePage }) => {

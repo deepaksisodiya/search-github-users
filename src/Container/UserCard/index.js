@@ -30,7 +30,8 @@ export default class UserCard extends Component {
         const data = await response.json();
 
         this.setState({
-          data
+          data,
+          isLoading: false
         });
       }
     } catch (error) {
@@ -46,7 +47,7 @@ export default class UserCard extends Component {
 
   onClick = username => {
     this.setState(
-      (prevState, prevProps) => {
+      prevState => {
         return {
           showExpandedView: !prevState.showExpandedView
         };
@@ -97,7 +98,6 @@ export default class UserCard extends Component {
   }
 }
 
-// TODO improve the proptype later
 UserCard.propTypes = {
   user: PropTypes.object.isRequired
 };
