@@ -2,7 +2,9 @@
   "name": "search-github-users",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://deepaksisodiya.github.io/search-github-users",
   "dependencies": {
+    "gh-pages": "^1.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "lodash.debounce": "^4.0.8",
@@ -24,6 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   }
 }
