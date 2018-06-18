@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Debounce from 'lodash.debounce';
 
 import { SORT_BY } from './../../utils';
 
@@ -15,18 +16,24 @@ export default class Header extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.debounceFetchUsers = Debounce(this.debounceFetchUsers, 500);
+  }
+
+  debounceFetchUsers() {
+    if (this.state.name && this.state.sortBy) {
+      this.props.getAllUsers(this.state.name, this.state.sortBy, 1);
+    }
   }
 
   handleNameChange(event) {
     event.preventDefault();
+    const nameValue = event.target.value;
     this.setState(
       {
-        name: event.target.value
+        name: nameValue
       },
       () => {
-        if (this.state.name && this.state.sortBy) {
-          this.getUsers();
-        }
+        this.debounceFetchUsers();
       }
     );
   }
@@ -39,14 +46,10 @@ export default class Header extends Component {
       },
       () => {
         if (this.state.name && this.state.sortBy) {
-          this.getUsers();
+          this.props.getAllUsers(this.state.name, this.state.sortBy, 1);
         }
       }
     );
-  }
-
-  getUsers() {
-    this.props.getAllUsers(this.state.name, this.state.sortBy, 1);
   }
 
   handleSubmit(event) {
