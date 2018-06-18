@@ -56,12 +56,12 @@ export default class Header extends Component {
     const { name, sortBy } = this.state;
 
     return (
-      <header className="Header">
-        <form className="form" onSubmit={this.handleSubmit}>
+      <header className="header">
+        <form className="header-form" onSubmit={this.handleSubmit}>
           <select
             value={sortBy}
             onChange={this.handleSortChange}
-            className="sort-input"
+            className="header-sort-input"
           >
             <option value={SORT_BY.A_Z}>Name(A-Z)</option>
             <option value={SORT_BY.Z_A}>Name(Z-A)</option>
@@ -73,7 +73,7 @@ export default class Header extends Component {
             value={name}
             onChange={this.handleNameChange}
             placeholder="Enter Name"
-            className="name-input"
+            className="header-name-input"
           />
         </form>
       </header>

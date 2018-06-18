@@ -1,9 +1,13 @@
-.repo-state {
+.user-repo-state {
   display: flex;
   justify-content: center;
   font-size: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
+}
+
+.user-repo-error {
+  color: red;
 }
 
 table {

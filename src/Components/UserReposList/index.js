@@ -5,19 +5,19 @@ import './UserReposList.css';
 
 const UserReposList = ({ isLoading, isError, data }) => {
   if (isLoading) {
-    return <div className="repo-state">Loading...</div>;
+    return <div className="user-repo-state">Loading...</div>;
   }
 
   if (isError) {
     return (
-      <div className="repo-state error">
+      <div className="user-repo-state user-repo-error">
         Error in getting user repos, Please try again
       </div>
     );
   }
 
   if (data && data.length === 0) {
-    return <div className="repo-state">User does not have any repo</div>;
+    return <div className="user-repo-state">User does not have any repo</div>;
   }
 
   if (data && data.length > 0) {

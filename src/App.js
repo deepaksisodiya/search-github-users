@@ -79,7 +79,7 @@ class App extends Component {
     const { data, isLoading, isError, activePage } = this.state;
 
     return (
-      <div className="App">
+      <div className="app">
         <Header getAllUsers={this.getAllUsers} />
         <UsersList
           data={data}

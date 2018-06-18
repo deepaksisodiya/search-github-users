@@ -1,4 +1,4 @@
-.user-card {
+.user-card-top {
   background-color: white;
   min-width: 600px;
   display: flex;
@@ -10,7 +10,7 @@
   box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.2);
 }
 
-.avatar-image {
+.user-card-avatar-image {
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -20,13 +20,13 @@
   padding-left: 16px;
 }
 
-.user-name {
+.user-card-user-name {
   font-size: 24px;
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-.profile-url {
+.user-card-profile-url {
   padding-bottom: 8px;
 }
 
@@ -35,11 +35,11 @@
   align-items: flex-end;
 }
 
-.user-card-top {
+.user-card {
   margin-top: 16px;
 }
 
-.expanded-card {
+.user-expanded-card {
   background-color: white;
   box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.2);
 }

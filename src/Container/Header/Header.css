@@ -1,4 +1,4 @@
-.Header {
+.header {
   display: flex;
   justify-content: center;
   background-color: #428bca;
@@ -6,7 +6,7 @@
   color: white;
 }
 
-.name-input {
+.header-name-input {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -16,14 +16,14 @@
   width: 300px;
 }
 
-.sort-input {
+.header-sort-input {
   height: 45px;
   width: 250px;
   background-color: white;
   font-size: 16px;
 }
 
-.form {
+.header-form {
   min-width: 630px;
   display: flex;
   justify-content: space-between;

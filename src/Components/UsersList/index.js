@@ -9,24 +9,26 @@ const UsersList = ({ isLoading, isError, data, onPageChange, activePage }) => {
   const { items, total_count } = data;
 
   if (isLoading) {
-    return <div className="users-state">Loading...</div>;
+    return <div className="userlist-users-state">Loading...</div>;
   }
 
   if (isError) {
     return (
-      <div className="users-state error">
+      <div className="userlist-users-state user-list-error">
         Error in searching for given name, Please try again
       </div>
     );
   }
 
   if (!total_count) {
-    return <div className="users-state">Please search users by name</div>;
+    return (
+      <div className="userlist-users-state">Please search users by name</div>
+    );
   }
 
   if (total_count === 0) {
     return (
-      <div className="users-state">
+      <div className="userlist-users-state">
         No user found for given name, Please try with other name
       </div>
     );
@@ -34,16 +36,18 @@ const UsersList = ({ isLoading, isError, data, onPageChange, activePage }) => {
 
   if (total_count > 0) {
     return (
-      <div className="user-list">
-        <div className="total-results">Total Results : {total_count}</div>
+      <div className="userlist">
+        <div className="userlist-total-results">
+          Total Results : {total_count}
+        </div>
         {items.map((user, index) => <UserCard key={index} user={user} />)}
-        <div className="pagination">
+        <div className="userlist-pagination">
           <Pagination
             activePage={activePage}
-            disabledClass="disabled-button"
-            activeClass="active-page"
-            itemClass="prev-next-button"
-            innerClass="paginate-container"
+            disabledClass="userlist-pagination-disabled-button"
+            activeClass="userlist-pagination-active-page"
+            itemClass="userlist-pagination-button"
+            innerClass="userlist-paginate-container"
             onChange={onPageChange}
             prevPageText="prev"
             nextPageText="next"

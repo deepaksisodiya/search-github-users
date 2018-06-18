@@ -1,33 +1,33 @@
-.user-list {
+.userlist {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.total-results {
+.userlist-total-results {
   min-width: 630px;
   margin-top: 16px;
 }
 
-.users-state {
+.userlist-users-state {
   font-size: 24px;
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
 
-.error {
+.user-list-error {
   color: red;
 }
 
-.pagination {
+.userlist-pagination {
   display: flex;
   min-width: 647px;
   justify-content: flex-end;
 }
 
-.paginate-container {
+.userlist-paginate-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -43,7 +43,7 @@
   text-decoration: none;
 }
 
-.prev-next-button {
+.userlist-pagination-button {
   padding-left: 12px;
   padding-right: 12px;
   padding-bottom: 8px;
@@ -58,12 +58,12 @@ ul {
   list-style-type: none;
 }
 
-.active-page {
+.userlist-pagination-active-page {
   background-color: #428bca;
   color: white;
 }
 
-.disabled-button > a {
+.userlist-pagination-disabled-button > a {
   color: #777;
   cursor: not-allowed;
 }

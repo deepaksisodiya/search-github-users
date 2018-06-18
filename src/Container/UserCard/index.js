@@ -63,12 +63,16 @@ export default class UserCard extends Component {
     const { isLoading, isError, data, showExpandedView } = this.state;
 
     return (
-      <div className="user-card-top">
-        <div className="user-card">
-          <img src={user.avatar_url} className="avatar-image" alt="logo" />
+      <div className="user-card">
+        <div className="user-card-top">
+          <img
+            src={user.avatar_url}
+            className="user-card-avatar-image"
+            alt="logo"
+          />
           <div>
-            <div className="user-name">{user.login}</div>
-            <div className="profile-url">Profile URL: {user.url}</div>
+            <div className="user-card-user-name">{user.login}</div>
+            <div className="user-card-profile-url">Profile URL: {user.url}</div>
             <div>User type: {user.type}</div>
             <div>Score: {user.score}</div>
           </div>
@@ -80,7 +84,7 @@ export default class UserCard extends Component {
           </div>
         </div>
         {showExpandedView && (
-          <div className="expanded-card">
+          <div className="user-expanded-card">
             <UserReposList
               isLoading={isLoading}
               isError={isError}
